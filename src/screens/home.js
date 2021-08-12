@@ -1,0 +1,38 @@
+import React from 'react'
+import { View, Text, StatusBar, StyleSheet, Button } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
+import ShowAllAds from '../components/ads/showAllAds';
+
+// export default function Home({ navigation }) {
+export default function Home() {
+  const navigation = useNavigation()
+
+  return (
+    <View style={styles.container}>
+      <Text>Home</Text>
+      {/* <Button
+        title="About"
+        onPress={() => navigation.navigate('About')}
+      /> */}
+      <Button
+        title="Go to Profile"
+        onPress={() => navigation.navigate('Profile')}
+      />
+       <Button
+        title="Go to Ads"
+        onPress={() => navigation.navigate('Advertisements')}
+      />
+      <ShowAllAds/>
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
