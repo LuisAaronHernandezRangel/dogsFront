@@ -1,20 +1,21 @@
+import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react'
-import { View, Text, StatusBar, StyleSheet,SafeAreaView,ActivityIndicator} from 'react-native'
+import { StyleSheet, View, Text, SafeAreaView, ActivityIndicator, FlatList } from 'react-native'
 import axios from 'axios'
-import { useRoute } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function ShowProfile() {
-  
-  const [profile, setProfile] = useState({})
-  console.log("profileeeeeeee", profile)
+
+
+export default function ShowAdvAndDueno() {
+  const [lesson, setLesson] = useState([])
+  console.log("lessonnnnnnnn", lesson)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
 
   const getData = async () => await AsyncStorage.getItem('token')
 
   useEffect(() => {
-    async function loadProfile() {
+    async function loadLesson() {
       setLoading(true)
       //const getData = async () => await AsyncStorage.getItem('token') 
       const token = await getData()
@@ -23,14 +24,14 @@ export default function ShowProfile() {
       axios({
         method: 'GET',
         baseURL: 'http://192.168.100.10:8000',
-        url: '/dueno/',
+        url: '/advertisements/perroAd',
         headers: {
           Authorization: `Token ${token}`
         }
       })
         .then(({ data }) => {
-          setProfile(data)
-          console.log("esta es mi data",data)
+          setLesson(data)
+          console.log(data)
         })
         .catch((error) => {
           setError(true)
@@ -42,7 +43,7 @@ export default function ShowProfile() {
         })
 
     }
-    loadProfile()
+    loadLesson()
   }, [])
 
  
@@ -57,20 +58,30 @@ export default function ShowProfile() {
   if (error) {
     return (
       <SafeAreaView style={styles.container}>
-        <Text>oopp! cant update info</Text>
+        <Text>oopp! can`t get info</Text>
       </SafeAreaView>
     )
   }
 
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{profile.userName}</Text>
-          <Text>{profile.description}</Text>
-          <Text>{profile.email}</Text>
-          <Text>{profile.photos}</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+     <FlatList
+       style={styles.list}
+       data={lesson}
+       renderItem={({ item }) => (
+        <View>
+          <Text style={styles.title}>{item.title}</Text>
+          <Text>{item.photos}</Text>
+          <Text>{item.city}</Text>
+          <Text>{item.dueno}</Text>
+        </View>
+        
+      )}
+      keyExtractor={item => `${item._id}`} 
+    />
+    <StatusBar style="auto" /> 
+  </SafeAreaView>
   );
 }
 

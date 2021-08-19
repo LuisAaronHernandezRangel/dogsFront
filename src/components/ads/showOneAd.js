@@ -7,11 +7,13 @@ export default function ShowOneAd() {
   const [advertisement, setAdvertisement] = useState({})
   const route = useRoute()
 
+  console.log(route.params)
+
   useEffect(() => {
     axios({
       method: 'GET',
-      baseURL: 'http://192.168.0.12:8000',
-      url: `lessons/lesson/${route.params._id}`
+      baseURL: 'http://192.168.100.10:8000',
+      url: `advertisements/seeAd/${route.params._id}`
       
     })
       .then(({ data }) => setAdvertisement(data))

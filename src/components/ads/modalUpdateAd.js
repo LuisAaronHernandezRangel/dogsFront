@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
 import UpdateAdvertisement from "./formUpdateAd";
-
+//import FormComments from "./formComments";
 export default function ModalUpdateAd() {
   const [modalVisible, setModalVisible] = useState(false);
   return (

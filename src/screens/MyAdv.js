@@ -1,17 +1,15 @@
 import React from 'react'
 import { View, Text, StatusBar, StyleSheet } from 'react-native'
-import ModalUpdateAd from '../components/ads/modalUpdateAd';
-import ShowOneAd from '../components/ads/showOneAd';
-import ModalCreateComments from '../components/ads/modalCreateComments';
+import ShowAdvAndDueno from '../components/ads/ShowAdvAndDueno';
+import { useNavigation } from "@react-navigation/native";
+
 
 //Modal updateLesson debe renderizara solo cuando tenga toquen
-export default function AdvOne() {
+export default function MyAdv() {
   return (
     <View style={styles.container}>
-      <Text>Advertisement</Text>
-      <ShowOneAd/>
-      <ModalUpdateAd/>
-      <ModalCreateComments/>
+      <Text> My Session</Text>
+      <ShowAdvAndDueno/>
       <StatusBar style="auto" />
     </View>
   );

@@ -116,6 +116,8 @@ import ProfileGeneral from './src/screens/profileGeneral'
 import LogIn from './src/screens/login';
 import AdvsAll from './src/screens/advsAll';
 import AdvOne from './src/screens/advOne';
+import City from "./src/screens/City";
+import MyAdv from "./src/screens/MyAdv";
 
 const Stack = createNativeStackNavigator();
 
@@ -129,7 +131,10 @@ export default function App() {
         <Stack.Screen name="Profile" component={ProfileGeneral} /> 
         <Stack.Screen name="Advertisements" component={AdvsAll} />
         <Stack.Screen name="Advertisement" component={AdvOne} /> 
+        <Stack.Screen name="City" component={City} />
+        <Stack.Screen name="MyAdv" component={MyAdv} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+//https://res.cloudinary.com/dr8h8cvn9/image/upload/v1629274669/woof_nruew4.jpg
