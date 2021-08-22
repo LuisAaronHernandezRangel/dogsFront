@@ -4,6 +4,10 @@ import { StatusBar } from 'expo-status-bar';
 import { useRoute } from '@react-navigation/native'
 import { StyleSheet, Text, View, FlatList, SafeAreaView, ActivityIndicator, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import {
+  Image,
+  
+} from "native-base";
 
 export default function FilterCategorys() {
 
@@ -62,12 +66,16 @@ export default function FilterCategorys() {
        renderItem={({ item }) => (
         <View>
           <Text style={styles.title}>{item.title}</Text>
-          <Text>{item.photos}</Text>
+          <Image
+              style={styles.image}
+              //source={ item.image }// url
+              source={{ uri: item.image }}
+            />
           <Text>{item.city}</Text>
           <Text>{item.dueno}</Text>
           <Button
               title="View More"
-              onPress={() => navigation.navigate('Lesson', {
+              onPress={() => navigation.navigate('Advertisement', {
                 _id: item._id,
                 title: item.title,
               })}
@@ -89,6 +97,10 @@ const styles = StyleSheet.create({
   },
   list: {
     paddingHorizontal: 10,
+  },
+  image: {
+    width: 400,
+    height: 300,
   },
   title: {
     fontSize: 24,

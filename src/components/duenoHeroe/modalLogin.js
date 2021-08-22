@@ -6,6 +6,7 @@ import {
   Text,
   Center,
   NativeBaseProvider,
+  Heading
 } from "native-base";
 import { StyleSheet, SafeAreaView, ActivityIndicator } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -79,7 +80,7 @@ export default function ModalLogIn() {
 
   return (
       <NativeBaseProvider>
-        <Center flex={1}>
+        <Center >
           <Modal
             size="lg"
             isOpen={modalVisible}
@@ -89,7 +90,17 @@ export default function ModalLogIn() {
           >
             <Modal.Content>
               <Modal.CloseButton />
-              <Modal.Header>Log In</Modal.Header>
+              {/* <Modal.Header>Log In</Modal.Header> */}
+              <Heading size="lg" color='primary.500'>
+                Welcome
+              </Heading>
+              <Heading color="muted.400" size="xs">
+                Sign in to continue!
+              </Heading>
+              <Heading color="muted.400" size="xs">
+                
+              </Heading>
+
               <Modal.Body>
                 <Text>Email</Text>
                 <Input
@@ -105,11 +116,13 @@ export default function ModalLogIn() {
                   value={password}
                   secureTextEntry
                 />
+                
               </Modal.Body>
               <Modal.Footer>
                 <Button.Group variant="ghost" space={2}>
                   <Button onPress={handleSubmit}>SUBMIT</Button>
                   <Button
+                    
                     onPress={() => {
                       setModalVisible(!modalVisible);
                     }}
@@ -126,7 +139,7 @@ export default function ModalLogIn() {
               setModalVisible(!modalVisible);
             }}
           >
-            Log In
+            Log  In 
           </Button>
         </Center>
       </NativeBaseProvider>
@@ -135,10 +148,10 @@ export default function ModalLogIn() {
 
 const styles = StyleSheet.create({
   centeredView: {
-    flex: 1,
+    // flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22,
+    marginTop: 1,
   },
   modalView: {
     margin: 20,
@@ -157,6 +170,7 @@ const styles = StyleSheet.create({
   },
   button: {
     borderRadius: 20,
+    width:200,
     padding: 10,
     elevation: 2,
   },

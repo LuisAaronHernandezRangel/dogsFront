@@ -16,7 +16,7 @@ export default function CardsCategory() {
     function handleSubmitTwo() {
         console.log('que mas?')
         navigation.navigate('City', {
-          _city: 'Acapulco'
+          _city: 'Mexico'
         })
     }
 
@@ -30,7 +30,7 @@ export default function CardsCategory() {
     function handleSubmitFour() {
       console.log('que mas?')
       navigation.navigate('City', {
-        _city: 'Mexico'
+        _city: 'Acapulco'
       })
     }
 
@@ -41,13 +41,14 @@ export default function CardsCategory() {
       style={{
         flexDirection: "column",
         padding: 5,
-        backgroundColor:"red",
+        backgroundColor:"white",
         marginBottom:20
       }}
     >
       <View style={{
           flexDirection: "row",
           margin: 10, 
+          marginBottom: 0,
           backgroundColor:"white"
         }}>
       <TouchableOpacity onPress={handleSubmitOne}>
@@ -57,8 +58,8 @@ export default function CardsCategory() {
         }}> */}
           <Image
             style={{
-              width: 80,
-              height: 80,
+              width: 125,
+              height: 125,
               margin:10,
             }} 
             source={{
@@ -74,8 +75,8 @@ export default function CardsCategory() {
         }} > */}
           <Image
             style={{
-              width: 80,
-              height: 80,
+              width: 125,
+              height: 125,
               margin:10,
             }}
             source={{
@@ -88,6 +89,8 @@ export default function CardsCategory() {
       <View style={{
           flexDirection: "row",
           margin: 10,
+          marginTop:0,
+          marginBottom:0,
           backgroundColor:"white"
         }}>
       <TouchableOpacity onPress={handleSubmitTree}>
@@ -97,8 +100,8 @@ export default function CardsCategory() {
         }} > */}
           <Image
             style={{
-              width: 80,
-              height: 80,
+              width: 125,
+              height: 125,
               margin:10,
             }}
             source={{
@@ -107,15 +110,15 @@ export default function CardsCategory() {
           />
         {/* </View> */}
       </TouchableOpacity>
-      <TouchableOpacity onPress={handleSubmitTree}>
+      <TouchableOpacity onPress={handleSubmitFour}>
       {/* <View style={{
         width: 80,
         height: 80, margin: 10, flex: 1
       }}> */}
         <Image
           style={{
-            width: 80,
-            height: 80,
+            width: 125,
+            height: 125,
             margin:10,
           }}
           source={{

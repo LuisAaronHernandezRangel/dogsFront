@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StatusBar, StyleSheet, Button, FlatList } from 'react-native'
+import { View,Image, Text, StatusBar, StyleSheet, Button, FlatList } from 'react-native'
 import axios from 'axios'
 import { useRoute } from '@react-navigation/native'
 
@@ -23,7 +23,11 @@ export default function ShowOneAd() {
     <View style={styles.container}>
       <Text style={styles.title}>{advertisement.title}</Text>
           <Text>{advertisement.description}</Text>
-          <Text>{advertisement.photo}</Text>
+          <Image
+            style={styles.image}
+            source={{ uri: advertisement.image }}
+          
+          />
           <Text>{advertisement.city}</Text>
           <Text>{advertisement.type_pet}</Text>
           <Text>{advertisement.name_dog}</Text>
@@ -42,5 +46,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold'
+  },
+  image: {
+    width: 400,
+    height: 300,
   }
 });

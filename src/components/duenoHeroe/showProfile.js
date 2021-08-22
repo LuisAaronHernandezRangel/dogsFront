@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StatusBar, StyleSheet,SafeAreaView,ActivityIndicator} from 'react-native'
+import { View, Text, StatusBar, StyleSheet,SafeAreaView,ActivityIndicator,Image} from 'react-native'
 import axios from 'axios'
 import { useRoute } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -68,7 +68,11 @@ export default function ShowProfile() {
       <Text style={styles.title}>{profile.userName}</Text>
           <Text>{profile.description}</Text>
           <Text>{profile.email}</Text>
-          <Text>{profile.photos}</Text>
+          <Image
+            style={styles.image}
+            source={{ uri:profile.image }}
+          
+          />
       <StatusBar style="auto" />
     </View>
   );

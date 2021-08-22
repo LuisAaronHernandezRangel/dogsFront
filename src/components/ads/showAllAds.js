@@ -1,7 +1,7 @@
 //192.168.0.12
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, View, FlatList, SafeAreaView, ActivityIndicator } from 'react-native';
+import { Button,Image, StyleSheet, Text, View, FlatList, SafeAreaView, ActivityIndicator } from 'react-native';
 import axios from 'axios'
 import { useNavigation } from '@react-navigation/native';
 // import advOne from '../../screens/advOne'
@@ -60,9 +60,13 @@ export default function ShowAllAds() {
       renderItem={({ item }) => (
         <View>
          <Text style={styles.title}>{item.title}</Text>
-          <Text>{item.photo}</Text>
+         <Image
+              style={styles.image}
+              //source={ item.image }// url
+              source={{ uri: item.image }}
+            />
           <Text>{item.name_dog}</Text>
-          <Text>{item.comments}</Text>
+          {/* <Text>{item.comments}</Text> */}
           <Text>{item.city}</Text>
           <Button
               title="View More"
@@ -95,5 +99,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold'
+  },
+  image: {
+    width: 400,
+    height: 300,
   }
 });

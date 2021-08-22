@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, View, Text, SafeAreaView, ActivityIndicator, FlatList } from 'react-native'
+import { StyleSheet, View, Text, SafeAreaView,Image, ActivityIndicator, FlatList } from 'react-native'
 import axios from 'axios'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -72,7 +72,11 @@ export default function ShowAdvAndDueno() {
        renderItem={({ item }) => (
         <View>
           <Text style={styles.title}>{item.title}</Text>
-          <Text>{item.photos}</Text>
+          <Image
+              style={styles.image}
+              //source={ item.image }// url
+              source={{ uri: item.image }}
+            />
           <Text>{item.city}</Text>
           <Text>{item.dueno}</Text>
         </View>
@@ -91,6 +95,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  image: {
+    width: 400,
+    height: 300,
   },
   title: {
     fontSize: 24,
