@@ -1,6 +1,6 @@
 import { useRoute } from "@react-navigation/native";
 import React from "react";
-import {View, Text, StatusBar, StyleSheet,SafeAreaView } from "react-native";
+import {View, StatusBar, StyleSheet,SafeAreaView } from "react-native";
 import ModalCreateAd from "../components/ads/modalCreateAd";
 import ModalUpdatePhotoProfile from "../components/duenoHeroe/modalUpdatePhotoProfile";
 import ModalUpdateProfile from "../components/duenoHeroe/modalUpdateProfile";
@@ -11,8 +11,10 @@ import {
   Button,
   Input,
   Center,
+  Image,
   NativeBaseProvider,
-  Heading
+  Heading,
+  Text
 } from "native-base";
 
 
@@ -22,7 +24,14 @@ export default function Profile() {
   return (
     <NativeBaseProvider>
     <View style={styles.container}>
-      <Text>Members Profile</Text>
+    <Text fontSize="3xl" bold>WELCOME!</Text>
+    <ShowProfile/>
+    <Image
+            style={styles.image}
+            source={{ uri:"https://res.cloudinary.com/dr8h8cvn9/image/upload/v1629514724/WhatsApp_Image_2021-08-15_at_5.02.39_PM_uzi7bx.jpg"}}
+          
+    />
+    
       <View style={styles.fixToText}>
         <View style={{ margin: 10, flex: 0.5 }}>
           <Button
@@ -35,10 +44,14 @@ export default function Profile() {
           onPress={() => navigation.navigate('NewAdv')}>Create Adv</Button>
          </View>  
       </View>
-      <ShowProfile/>
-      <ModalUpdateProfile/>
-      <ModalUpdatePhotoProfile/>
+      
+      {/* <ModalUpdateProfile/>
+      <ModalUpdatePhotoProfile/> */}
       <StatusBar style="auto" />
+      <Image
+            style={styles.image}
+            source={{ uri:"https://res.cloudinary.com/dr8h8cvn9/image/upload/v1629274669/perrowoof_w0wkkb.jpg"}}   
+    />
     </View>
     </NativeBaseProvider>
   );
@@ -46,7 +59,7 @@ export default function Profile() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
@@ -54,6 +67,10 @@ const styles = StyleSheet.create({
   fixToText: {
     flexDirection: "row",
     justifyContent: "center",
-    padding: 40,
+    padding: 30,
   },
+  image: {
+    width: 200,
+    height: 200,
+  }
 });

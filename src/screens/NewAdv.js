@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StatusBar, StyleSheet,ActivityIndicator,SafeAreaView, Button,ScrollView, Image,FlatList } from 'react-native'
+import { View, StatusBar, StyleSheet,ActivityIndicator,SafeAreaView,ScrollView, Image,FlatList } from 'react-native'
 import * as ImagePicker from 'expo-image-picker'
 import axios from 'axios'
 import { useNavigation } from "@react-navigation/native";
@@ -9,6 +9,9 @@ import {
   Input,
   Select,
   CheckIcon,
+  Button,
+  Center,
+  Text,
   Switch, 
   HStack,  
   NativeBaseProvider,  
@@ -16,8 +19,11 @@ import {
 
 export default function NewAdv() {
   const [title, setTitle] = useState("");
+  const [name_dog, setName] = useState("");
+  const [type_pet, setTypePet] = useState("");
   const [description, setDescription] = useState("");
   const [city, setCity] = useState("");
+  const [contact, setContact] = useState("");
   const [time, setTime] = useState('');
   const [terms, setTerms] = useState(false);
   const [cameraRollPermission, setCameraRollPermission] = useState('denied')
@@ -74,8 +80,12 @@ console.log(data)
     const data = new FormData()
     
     data.append('title', title)
+    data.append('name_dog', name_dog)
+    data.append('type_pet', type_pet)
     data.append('description', description)
     data.append('city', city)
+    data.append('contact', contact)
+
     // data.append('time', time)
     // data.append('terms', terms)
     if(image) {
@@ -100,9 +110,12 @@ console.log(data)
       navigation.navigate("Advertisement", {
         _id: data._id,
         title: data.title,
+        name_dog:data.name_dog,
+        type_pet:data.type_pet,
         description:data.description,
         city:data.city,
-        image: data.image
+        image: data.image,
+        contact:data.contact
       });
     })
     .catch((e) => {
@@ -133,12 +146,29 @@ console.log(data)
     <ScrollView style={styles.scroll}>
       <View style={styles.container}>
       <NativeBaseProvider>
-      <Text>Create Adv</Text>                 
+      <Text fontSize="3xl" bold>Create New Post</Text>
+      <Center>
+      <Image
+            style={styles.image2}
+            source={{ uri:"https://res.cloudinary.com/dr8h8cvn9/image/upload/v1629274669/perrowoof_w0wkkb.jpg"}}   
+      /></Center>              
           <Text>Title</Text>
               <Input
                 placeholder="title"
                 onChangeText={(value) => setTitle(value)}
                 value={title}
+              />
+              <Text>Name Dog</Text>
+              <Input
+                placeholder="Name of your Dog"
+                onChangeText={(value) => setName(value)}
+                value={name_dog}
+              />
+              <Text>Type Pet</Text>
+              <Input
+                placeholder="maltes/husky/golden"
+                onChangeText={(value) => setTypePet(value)}
+                value={type_pet}
               />
               <Text>Description</Text>
               <Input
@@ -165,24 +195,30 @@ console.log(data)
                 <Select.Item label="Mexico" value="Mexico" />
         
               </Select>
+              <Text>contact</Text>
+              <Input
+                placeholder="phone/email/facebook"
+                onChangeText={(value) => setContact(value)}
+                value={contact}
+              />
+              <Text></Text>
     </NativeBaseProvider> 
     
       <View style={styles.container}>
       {cameraPermission ? (
         <Button
-          color="#f194ff"
-          title="Take a Picture"
+        variant="outline"
+         
           onPress={handleTakePicture}
-        />
+        >Take a Picture</Button>
       ) : (
         <Text>Please allow the app to access camera in your settings</Text>
-      )}
+      )}<Text></Text>
       {cameraRollPermission === 'granted' ? (
         <Button
-          color="#f194ff"
-          title="Pick an Image"
+          variant="outline"
           onPress={handlePickImage}
-        />
+        >Pick an Image</Button>
       ) : (
         <Text>Please allow the app to access photos in your settings</Text>
       )}
@@ -192,10 +228,12 @@ console.log(data)
           source={{ uri: image.uri }}// url
         />
       )}
-      <Button onPress={handleSubmit}
-      color="#f194ff"
-      title="Create Event"
-      ></Button>
+      <Text></Text>
+      <Button 
+      onPress={handleSubmit}
+      color="cyan.500"
+     
+      >Create Post</Button>
       <StatusBar style="auto" />
     </View>
     </View>
@@ -207,8 +245,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    
     // alignItems: 'center',
-    //  justifyContent: 'center',
+    // justifyContent: 'center',
   },
   image: {
     width: 400,
@@ -217,5 +256,9 @@ const styles = StyleSheet.create({
   scroll:{
     margin:10,
     backgroundColor: '#fff',
+  },
+  image2: {
+    width: 100,
+    height: 100,
   }
 });

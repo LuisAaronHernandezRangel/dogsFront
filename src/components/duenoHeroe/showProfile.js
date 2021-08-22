@@ -65,14 +65,15 @@ export default function ShowProfile() {
 
   return (
     <View style={styles.container}>
+      <Text></Text>
       <Text style={styles.title}>{profile.userName}</Text>
-          <Text>{profile.description}</Text>
-          <Text>{profile.email}</Text>
-          <Image
+          {/* <Text style={styles.title}>{profile.description}</Text> */}
+          {/* <Text style={styles.title2}>CORREO:{profile.email}</Text> */}
+          {/* <Image
             style={styles.image}
             source={{ uri:profile.image }}
           
-          />
+          /> */}
       <StatusBar style="auto" />
     </View>
   );
@@ -80,10 +81,10 @@ export default function ShowProfile() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom:10,
   },
   title: {
     fontSize: 24,
