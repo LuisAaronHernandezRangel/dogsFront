@@ -7,7 +7,7 @@ import advOne from '../../screens/advOne';
 
 export default function ShowMyLessons() {
 
-  const [advs, setAdvs] = useState([])
+  const [lessons, setLessons] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const navigation = useNavigation()
@@ -58,12 +58,16 @@ export default function ShowMyLessons() {
        renderItem={({ item }) => (
         <View>
           <Text style={styles.title}>{item.title}</Text>
-          <Text>{item.photos}</Text>
+          <Image
+              style={styles.image}
+              //source={ item.image }// url
+              source={{ uri: item.image }}
+            />
           <Text>{item.city}</Text>
           <Text>{item.dueno}</Text>
           <Button
               title="View More"
-              onPress={() => navigation.navigate('advOne', {
+              onPress={() => navigation.navigate('Advertisement', {
                 _id: item._id,
                 title: item.title,
               })}
@@ -85,6 +89,10 @@ const styles = StyleSheet.create({
   },
   list: {
     paddingHorizontal: 10,
+  },
+  image: {
+    width: 400,
+    height: 300,
   },
   title: {
     fontSize: 24,

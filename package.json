@@ -17,6 +17,7 @@
     "busboy": "^0.3.1",
     "cloudinary": "^1.26.3",
     "expo": "~42.0.1",
+    "expo-av": "~9.2.3",
     "expo-image-picker": "~10.2.2",
     "expo-status-bar": "~1.0.4",
     "native-base": "^3.0.7",

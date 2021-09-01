@@ -2,8 +2,19 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useRoute } from '@react-navigation/native'
-import { StyleSheet, Text, View, FlatList, SafeAreaView, ActivityIndicator, Button } from 'react-native';
+import { StyleSheet, View, FlatList, SafeAreaView, ActivityIndicator,Image} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import {
+  Modal,
+  Button,
+  Divider,
+  Text,
+  Flex,
+  Input,
+  Center,
+  NativeBaseProvider,
+  Heading
+} from "native-base";
 
 export default function FilterCategorys() {
 
@@ -62,16 +73,27 @@ export default function FilterCategorys() {
        renderItem={({ item }) => (
         <View>
           <Text style={styles.title}>{item.title}</Text>
-          <Text>{item.photos}</Text>
-          <Text>{item.city}</Text>
-          <Text>{item.dueno}</Text>
+          <Image
+              style={styles.image}
+              //source={ item.image }// url
+              source={{ uri: item.image }}
+            />
+         <Center>
+          <Flex direction="row" p={2} >
+          <Text fontSize="md"><Text bold> NAME: </Text>{item.name_dog}  </Text>
+          <Divider size={3} my={1} orientation="vertical" />
+          <Text fontSize="md"><Text bold>  CITY: </Text>{item.city}</Text>
+          </Flex>
+          </Center>
+          <Text fontSize="md"><Text bold>CONTACT: </Text>{item.contact}</Text>
+          <Text fontSize="md"><Text bold>DESCRIPTION: </Text>{item.description}</Text>
           <Button
-              title="View More"
-              onPress={() => navigation.navigate('Lesson', {
+              onPress={() => navigation.navigate('Advertisement', {
                 _id: item._id,
-                title: item.title,
+                title: item.title
               })}
-            /> 
+            > View More </Button>
+          <Divider size={1} my={2} />
         </View>
       )}
       keyExtractor={item => `${item._id}`} 
@@ -81,17 +103,25 @@ export default function FilterCategorys() {
   );
 }
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "white",
     alignItems: 'center',
     justifyContent: 'center',
   },
   list: {
-    paddingHorizontal: 10,
+    //paddingHorizontal: 10,
+    width: 300,
+    textAlign:"center",
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold'
+  },
+  image: {
+    width: 400,
+    height: 300,
+    margin: 10,
   }
 });

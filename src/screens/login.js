@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react'
-import { View, Text, StyleSheet,ImageBackground } from 'react-native'
+import { View, Text, StyleSheet,ImageBackground,Box } from 'react-native'
 import ModalLogIn from '../components/duenoHeroe/modalLogin';
 import ModalRegister from '../components/duenoHeroe/modalRegister';
 
@@ -18,15 +18,16 @@ export default function LogIn() {
     resizeMode="cover" 
     style={styles.image}>
     <Text style={styles.text}>Find your Pet!</Text>
-    <View style={styles.container}>
+      <View style={styles.container}>
+        <View style={styles.container2}>
+        <ModalRegister />
+        <ModalLogIn />
+        </View>
       
-      <ModalRegister />
-      <ModalLogIn />
-      <StatusBar style="auto" />
       </View>
       
       <StatusBar style="auto" />
-      </ImageBackground>
+    </ImageBackground>
     </View>
   );
 }
@@ -34,7 +35,22 @@ export default function LogIn() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: "row",
+    margin: 10, 
+    
     //backgroundColor: "#fff",
+    // alignItems: "center",
+    justifyContent: "center",
+    
+  },
+  container2: {
+    
+    width: 180,
+    height: 100,
+    flexDirection: "row",
+    marginTop: 470, 
+    
+    
     //alignItems: "center",
     //justifyContent: "center",
     
@@ -44,11 +60,11 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   text: {
-    color: "white",
+    color: "mediumvioletred",
     fontSize: 40,
-    lineHeight: 44,
+    lineHeight: 50,
     fontWeight: "bold",
     textAlign: "center",
-    backgroundColor: "pink"
+    backgroundColor: "white"
   }
 });

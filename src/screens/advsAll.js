@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StatusBar, StyleSheet } from 'react-native'
+import { View, Text, StatusBar, StyleSheet, Image} from 'react-native'
 import ShowAllAds from '../components/ads/showAllAds';
 
 
@@ -7,7 +7,10 @@ import ShowAllAds from '../components/ads/showAllAds';
 export default function AdvsAll() {
   return (
     <View style={styles.container}>
-      <Text>Advertisements</Text>
+      <Image
+            style={styles.image2}
+            source={{ uri:"https://res.cloudinary.com/dr8h8cvn9/image/upload/v1629274669/perrowoof_w0wkkb.jpg"}}   
+      />
     <ShowAllAds/>
       <StatusBar style="auto" />
     </View>
@@ -21,4 +24,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  image2: {
+    width: 50,
+    height: 50,
+  }
 });

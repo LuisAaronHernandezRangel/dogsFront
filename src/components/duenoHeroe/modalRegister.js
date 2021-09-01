@@ -6,6 +6,7 @@ import {
   Text,
   Center,
   NativeBaseProvider,
+  Heading
 } from "native-base";
 import { StyleSheet, SafeAreaView, ActivityIndicator } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -79,7 +80,7 @@ export default function ModalRegister() {
 
   return (
     <NativeBaseProvider>
-      <Center flex={1}>
+      <Center>
         <Modal
           size="lg"
           isOpen={modalVisible}
@@ -89,7 +90,15 @@ export default function ModalRegister() {
         >
           <Modal.Content>
             <Modal.CloseButton />
-            <Modal.Header>Sign Up</Modal.Header>
+            <Heading size="lg" color='primary.500'>
+                Welcome
+              </Heading>
+              <Heading color="muted.400" size="xs">
+                Sign up to continue!
+              </Heading>
+              <Heading color="muted.400" size="xs">
+                
+              </Heading>
             <Modal.Body>
               <Text>Name</Text>
               <Input
@@ -145,7 +154,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22,
+    marginTop: 10,
   },
   modalView: {
     margin: 20,
