@@ -60,11 +60,11 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   text: {
-    color: "white",
+    color: "mediumvioletred",
     fontSize: 40,
-    lineHeight: 44,
+    lineHeight: 50,
     fontWeight: "bold",
     textAlign: "center",
-    backgroundColor: "pink"
+    backgroundColor: "white"
   }
 });
